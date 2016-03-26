@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stening", "Stening\Stening.csproj", "{FC85F3E6-1C3A-4459-94A2-4DD286E0A7DB}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FlightBookingDatabase", "FlightBookingDatabase\FlightBookingDatabase.sqlproj", "{61C292D2-B9CF-464D-BA7E-ADB632B8271D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC85F3E6-1C3A-4459-94A2-4DD286E0A7DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC85F3E6-1C3A-4459-94A2-4DD286E0A7DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC85F3E6-1C3A-4459-94A2-4DD286E0A7DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC85F3E6-1C3A-4459-94A2-4DD286E0A7DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
