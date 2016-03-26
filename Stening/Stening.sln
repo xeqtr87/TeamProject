@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stening", "Stening\Stening.csproj", "{FC85F3E6-1C3A-4459-94A2-4DD286E0A7DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBookingMVC", "Stening\TravelBookingMVC.csproj", "{FC85F3E6-1C3A-4459-94A2-4DD286E0A7DB}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FlightBookingDatabase", "FlightBookingDatabase\FlightBookingDatabase.sqlproj", "{61C292D2-B9CF-464D-BA7E-ADB632B8271D}"
 EndProject
