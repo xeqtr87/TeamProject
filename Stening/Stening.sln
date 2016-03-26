@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FlightBookingDatabase", "FlightBookingDatabase\FlightBookingDatabase.sqlproj", "{61C292D2-B9CF-464D-BA7E-ADB632B8271D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBookingMVC", "TravelBookingMVC\TravelBookingMVC.csproj", "{45755DA3-761A-4E18-8FE8-C41D3C884B23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{61C292D2-B9CF-464D-BA7E-ADB632B8271D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{45755DA3-761A-4E18-8FE8-C41D3C884B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45755DA3-761A-4E18-8FE8-C41D3C884B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45755DA3-761A-4E18-8FE8-C41D3C884B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45755DA3-761A-4E18-8FE8-C41D3C884B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
