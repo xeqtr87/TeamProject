@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="testModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'test.dbo.Airline' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Airline">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Residence" />
+          </Key>
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Residence" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'test.dbo.Airplane' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Airplane">
+          <Key>
+            <PropertyRef Name="Airplane_ID" />
+            <PropertyRef Name="Plane_Type" />
+            <PropertyRef Name="Max_Seats" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Airplane_ID" Type="int" Nullable="false" />
+          <Property Name="Plane_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Max_Seats" Type="int" Nullable="false" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'test.dbo.Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="Customer_ID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'test.dbo.Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="NumberOfSeats" />
+            <PropertyRef Name="Customer_ID" />
+            <PropertyRef Name="Route_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="NumberOfSeats" Type="int" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" Nullable="false" />
+          <Property Name="Route_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'test.dbo.Route' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Route_ID" />
+            <PropertyRef Name="Departure" />
+            <PropertyRef Name="Destination" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Airplane_ID" />
+          </Key>
+          <Property Name="Route_ID" Type="int" Nullable="false" />
+          <Property Name="Departure" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Airplane_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="ListDestination" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="testModelStoreContainer">
+          <EntitySet Name="Airline" EntityType="Self.Airline" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Airline].[Company_ID] AS [Company_ID], 
+    [Airline].[Title] AS [Title], 
+    [Airline].[Residence] AS [Residence]
+    FROM [dbo].[Airline] AS [Airline]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Airplane" EntityType="Self.Airplane" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Airplane].[Airplane_ID] AS [Airplane_ID], 
+    [Airplane].[Plane_Type] AS [Plane_Type], 
+    [Airplane].[Max_Seats] AS [Max_Seats], 
+    [Airplane].[Company_ID] AS [Company_ID]
+    FROM [dbo].[Airplane] AS [Airplane]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Customer" EntityType="Self.Customer" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Customer].[Customer_ID] AS [Customer_ID], 
+    [Customer].[FirstName] AS [FirstName], 
+    [Customer].[LastName] AS [LastName], 
+    [Customer].[Email] AS [Email], 
+    [Customer].[Phone] AS [Phone]
+    FROM [dbo].[Customer] AS [Customer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Orders" EntityType="Self.Orders" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Orders].[Order_ID] AS [Order_ID], 
+    [Orders].[Price] AS [Price], 
+    [Orders].[NumberOfSeats] AS [NumberOfSeats], 
+    [Orders].[Customer_ID] AS [Customer_ID], 
+    [Orders].[Route_ID] AS [Route_ID]
+    FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Route" EntityType="Self.Route" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Route].[Route_ID] AS [Route_ID], 
+    [Route].[Departure] AS [Departure], 
+    [Route].[Destination] AS [Destination], 
+    [Route].[Date] AS [Date], 
+    [Route].[Airplane_ID] AS [Airplane_ID]
+    FROM [dbo].[Route] AS [Route]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Airline">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Residence" />
+          </Key>
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Residence" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Airplane">
+          <Key>
+            <PropertyRef Name="Airplane_ID" />
+            <PropertyRef Name="Plane_Type" />
+            <PropertyRef Name="Max_Seats" />
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Airplane_ID" Type="Int32" Nullable="false" />
+          <Property Name="Plane_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Max_Seats" Type="Int32" Nullable="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="NumberOfSeats" />
+            <PropertyRef Name="Customer_ID" />
+            <PropertyRef Name="Route_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfSeats" Type="Int32" Nullable="false" />
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+          <Property Name="Route_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Route_ID" />
+            <PropertyRef Name="Departure" />
+            <PropertyRef Name="Destination" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Airplane_ID" />
+          </Key>
+          <Property Name="Route_ID" Type="Int32" Nullable="false" />
+          <Property Name="Departure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Airplane_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Airline" EntityType="Self.Airline" />
+          <EntitySet Name="Airplane" EntityType="Self.Airplane" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Route" EntityType="Self.Route" />
+          <FunctionImport Name="ListDestination" EntitySet="Route" ReturnType="Collection(testModel.Route)" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testModelStoreContainer" CdmEntityContainer="testEntities">
+          <EntitySetMapping Name="Airline">
+            <EntityTypeMapping TypeName="testModel.Airline">
+              <MappingFragment StoreEntitySet="Airline">
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Airplane">
+            <EntityTypeMapping TypeName="testModel.Airplane">
+              <MappingFragment StoreEntitySet="Airplane">
+                <ScalarProperty Name="Airplane_ID" ColumnName="Airplane_ID" />
+                <ScalarProperty Name="Plane_Type" ColumnName="Plane_Type" />
+                <ScalarProperty Name="Max_Seats" ColumnName="Max_Seats" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="testModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="testModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NumberOfSeats" ColumnName="NumberOfSeats" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Route_ID" ColumnName="Route_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Route">
+            <EntityTypeMapping TypeName="testModel.Route">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="Route_ID" ColumnName="Route_ID" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Airplane_ID" ColumnName="Airplane_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ListDestination" FunctionName="testModel.Store.ListDestination" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

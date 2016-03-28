@@ -1,0 +1,98 @@
+﻿@model WebApplication4.Models.Passengers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Passengers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeOfDeath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeOfDeath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.condition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.condition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pass_DeathCause.DeathCause)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pass_DeathCause.DeathCause)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pass_Origin.Planet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pass_Origin.Planet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pass_Ranking.Ranking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pass_Ranking.Ranking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pass_Section.Mission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pass_Section.Mission)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Employee_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

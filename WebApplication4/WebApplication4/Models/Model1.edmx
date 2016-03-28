@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SvestapolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Pass_DeathCause">
+          <Key>
+            <PropertyRef Name="Death_ID" />
+          </Key>
+          <Property Name="Death_ID" Type="int" Nullable="false" />
+          <Property Name="DeathCause" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pass_Origin">
+          <Key>
+            <PropertyRef Name="Origin_ID" />
+          </Key>
+          <Property Name="Origin_ID" Type="int" Nullable="false" />
+          <Property Name="Planet" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Click" Type="int" Nullable="false" />
+          <Property Name="Galaxy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pass_Ranking">
+          <Key>
+            <PropertyRef Name="Rank_ID" />
+          </Key>
+          <Property Name="Rank_ID" Type="int" Nullable="false" />
+          <Property Name="Ranking" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Salary" Type="int" Nullable="false" />
+          <Property Name="PayGrade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pass_Section">
+          <Key>
+            <PropertyRef Name="Section_ID" />
+          </Key>
+          <Property Name="Section_ID" Type="int" Nullable="false" />
+          <Property Name="Section" Type="int" />
+          <Property Name="Mission" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Passengers">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Section_ID" Type="int" />
+          <Property Name="Origin_ID" Type="int" Nullable="false" />
+          <Property Name="Death_ID" Type="int" />
+          <Property Name="Rank_ID" Type="int" Nullable="false" />
+          <Property Name="TimeOfDeath" Type="datetime" />
+          <Property Name="condition" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_Passengers_Pass_DeathCause">
+          <End Role="Pass_DeathCause" Type="Self.Pass_DeathCause" Multiplicity="0..1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_DeathCause">
+              <PropertyRef Name="Death_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Death_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Pass_Origin">
+          <End Role="Pass_Origin" Type="Self.Pass_Origin" Multiplicity="1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_Origin">
+              <PropertyRef Name="Origin_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Origin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Pass_Ranking">
+          <End Role="Pass_Ranking" Type="Self.Pass_Ranking" Multiplicity="1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_Ranking">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Pass_Section">
+          <End Role="Pass_Section" Type="Self.Pass_Section" Multiplicity="0..1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_Section">
+              <PropertyRef Name="Section_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Section_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ShowAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SvestapolModelStoreContainer">
+          <EntitySet Name="Pass_DeathCause" EntityType="Self.Pass_DeathCause" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pass_Origin" EntityType="Self.Pass_Origin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pass_Ranking" EntityType="Self.Pass_Ranking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pass_Section" EntityType="Self.Pass_Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passengers" EntityType="Self.Passengers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Passengers_Pass_DeathCause" Association="Self.FK_Passengers_Pass_DeathCause">
+            <End Role="Pass_DeathCause" EntitySet="Pass_DeathCause" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Pass_Origin" Association="Self.FK_Passengers_Pass_Origin">
+            <End Role="Pass_Origin" EntitySet="Pass_Origin" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Pass_Ranking" Association="Self.FK_Passengers_Pass_Ranking">
+            <End Role="Pass_Ranking" EntitySet="Pass_Ranking" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Pass_Section" Association="Self.FK_Passengers_Pass_Section">
+            <End Role="Pass_Section" EntitySet="Pass_Section" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SvestapolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pass_DeathCause">
+          <Key>
+            <PropertyRef Name="Death_ID" />
+          </Key>
+          <Property Name="Death_ID" Type="Int32" Nullable="false" />
+          <Property Name="DeathCause" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Passengers" Relationship="Self.FK_Passengers_Pass_DeathCause" FromRole="Pass_DeathCause" ToRole="Passengers" />
+        </EntityType>
+        <EntityType Name="Pass_Origin">
+          <Key>
+            <PropertyRef Name="Origin_ID" />
+          </Key>
+          <Property Name="Origin_ID" Type="Int32" Nullable="false" />
+          <Property Name="Planet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Click" Type="Int32" Nullable="false" />
+          <Property Name="Galaxy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Passengers" Relationship="Self.FK_Passengers_Pass_Origin" FromRole="Pass_Origin" ToRole="Passengers" />
+        </EntityType>
+        <EntityType Name="Pass_Ranking">
+          <Key>
+            <PropertyRef Name="Rank_ID" />
+          </Key>
+          <Property Name="Rank_ID" Type="Int32" Nullable="false" />
+          <Property Name="Ranking" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salary" Type="Int32" Nullable="false" />
+          <Property Name="PayGrade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Passengers" Relationship="Self.FK_Passengers_Pass_Ranking" FromRole="Pass_Ranking" ToRole="Passengers" />
+        </EntityType>
+        <EntityType Name="Pass_Section">
+          <Key>
+            <PropertyRef Name="Section_ID" />
+          </Key>
+          <Property Name="Section_ID" Type="Int32" Nullable="false" />
+          <Property Name="Section" Type="Int32" />
+          <Property Name="Mission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Passengers" Relationship="Self.FK_Passengers_Pass_Section" FromRole="Pass_Section" ToRole="Passengers" />
+        </EntityType>
+        <EntityType Name="Passengers">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Section_ID" Type="Int32" />
+          <Property Name="Origin_ID" Type="Int32" Nullable="false" />
+          <Property Name="Death_ID" Type="Int32" />
+          <Property Name="Rank_ID" Type="Int32" Nullable="false" />
+          <Property Name="TimeOfDeath" Type="DateTime" Precision="3" />
+          <Property Name="condition" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pass_DeathCause" Relationship="Self.FK_Passengers_Pass_DeathCause" FromRole="Passengers" ToRole="Pass_DeathCause" />
+          <NavigationProperty Name="Pass_Origin" Relationship="Self.FK_Passengers_Pass_Origin" FromRole="Passengers" ToRole="Pass_Origin" />
+          <NavigationProperty Name="Pass_Ranking" Relationship="Self.FK_Passengers_Pass_Ranking" FromRole="Passengers" ToRole="Pass_Ranking" />
+          <NavigationProperty Name="Pass_Section" Relationship="Self.FK_Passengers_Pass_Section" FromRole="Passengers" ToRole="Pass_Section" />
+        </EntityType>
+        <Association Name="FK_Passengers_Pass_DeathCause">
+          <End Role="Pass_DeathCause" Type="Self.Pass_DeathCause" Multiplicity="0..1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_DeathCause">
+              <PropertyRef Name="Death_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Death_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Pass_Origin">
+          <End Role="Pass_Origin" Type="Self.Pass_Origin" Multiplicity="1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_Origin">
+              <PropertyRef Name="Origin_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Origin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Pass_Ranking">
+          <End Role="Pass_Ranking" Type="Self.Pass_Ranking" Multiplicity="1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_Ranking">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Pass_Section">
+          <End Role="Pass_Section" Type="Self.Pass_Section" Multiplicity="0..1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pass_Section">
+              <PropertyRef Name="Section_ID" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="Section_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SvestapolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pass_DeathCause" EntityType="Self.Pass_DeathCause" />
+          <EntitySet Name="Pass_Origin" EntityType="Self.Pass_Origin" />
+          <EntitySet Name="Pass_Ranking" EntityType="Self.Pass_Ranking" />
+          <EntitySet Name="Pass_Section" EntityType="Self.Pass_Section" />
+          <EntitySet Name="Passengers" EntityType="Self.Passengers" />
+          <AssociationSet Name="FK_Passengers_Pass_DeathCause" Association="Self.FK_Passengers_Pass_DeathCause">
+            <End Role="Pass_DeathCause" EntitySet="Pass_DeathCause" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Pass_Origin" Association="Self.FK_Passengers_Pass_Origin">
+            <End Role="Pass_Origin" EntitySet="Pass_Origin" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Pass_Ranking" Association="Self.FK_Passengers_Pass_Ranking">
+            <End Role="Pass_Ranking" EntitySet="Pass_Ranking" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Pass_Section" Association="Self.FK_Passengers_Pass_Section">
+            <End Role="Pass_Section" EntitySet="Pass_Section" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <FunctionImport Name="ShowAll" EntitySet="Passengers" ReturnType="Collection(SvestapolModel.Passengers)" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SvestapolModelStoreContainer" CdmEntityContainer="SvestapolEntities">
+          <EntitySetMapping Name="Pass_DeathCause">
+            <EntityTypeMapping TypeName="SvestapolModel.Pass_DeathCause">
+              <MappingFragment StoreEntitySet="Pass_DeathCause">
+                <ScalarProperty Name="Death_ID" ColumnName="Death_ID" />
+                <ScalarProperty Name="DeathCause" ColumnName="DeathCause" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pass_Origin">
+            <EntityTypeMapping TypeName="SvestapolModel.Pass_Origin">
+              <MappingFragment StoreEntitySet="Pass_Origin">
+                <ScalarProperty Name="Origin_ID" ColumnName="Origin_ID" />
+                <ScalarProperty Name="Planet" ColumnName="Planet" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="Galaxy" ColumnName="Galaxy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pass_Ranking">
+            <EntityTypeMapping TypeName="SvestapolModel.Pass_Ranking">
+              <MappingFragment StoreEntitySet="Pass_Ranking">
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="PayGrade" ColumnName="PayGrade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pass_Section">
+            <EntityTypeMapping TypeName="SvestapolModel.Pass_Section">
+              <MappingFragment StoreEntitySet="Pass_Section">
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Mission" ColumnName="Mission" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passengers">
+            <EntityTypeMapping TypeName="SvestapolModel.Passengers">
+              <MappingFragment StoreEntitySet="Passengers">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+                <ScalarProperty Name="Origin_ID" ColumnName="Origin_ID" />
+                <ScalarProperty Name="Death_ID" ColumnName="Death_ID" />
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
+                <ScalarProperty Name="TimeOfDeath" ColumnName="TimeOfDeath" />
+                <ScalarProperty Name="condition" ColumnName="condition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ShowAll" FunctionName="SvestapolModel.Store.ShowAll" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

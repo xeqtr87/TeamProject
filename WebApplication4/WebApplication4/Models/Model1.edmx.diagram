@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="487b6b60b6644b8a9c13288239b81250" Name="Diagram1">
+        <EntityTypeShape EntityType="SvestapolModel.Pass_DeathCause" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SvestapolModel.Pass_Origin" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SvestapolModel.Pass_Ranking" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SvestapolModel.Pass_Section" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SvestapolModel.Passengers" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="SvestapolModel.FK_Passengers_Pass_DeathCause" ManuallyRouted="false" />
+        <AssociationConnector Association="SvestapolModel.FK_Passengers_Pass_Origin" ManuallyRouted="false" />
+        <AssociationConnector Association="SvestapolModel.FK_Passengers_Pass_Ranking" ManuallyRouted="false" />
+        <AssociationConnector Association="SvestapolModel.FK_Passengers_Pass_Section" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
