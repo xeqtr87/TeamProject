@@ -72,6 +72,7 @@
     <Compile Include="GetCustomer.cs" />
     <Compile Include="GetCustomerReturnOne.cs" />
     <Compile Include="GetCustomerSendCommand.cs" />
-    <Compile Include="SqlFunction1.cs" />
+    <Compile Include="TestFunction1.cs" />
+    <Compile Include="GetFirstNameAndIDByFirstName.cs" />
   </ItemGroup>
 </Project>

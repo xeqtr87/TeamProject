@@ -196,5 +196,35 @@ namespace TravelBookingMVC.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SqlFunction1_Result>("[TravelBookingEntities].[SqlFunction1](@firstName)", firstNameParameter);
         }
+    
+        [DbFunction("TravelBookingEntities", "TestFunction1")]
+        public virtual IQueryable<TestFunction1_Result> TestFunction1(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<TestFunction1_Result>("[TravelBookingEntities].[TestFunction1](@firstName)", firstNameParameter);
+        }
+    
+        [DbFunction("TravelBookingEntities", "SqlFunction11")]
+        public virtual IQueryable<SqlFunction11_Result> SqlFunction11(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SqlFunction11_Result>("[TravelBookingEntities].[SqlFunction11](@firstName)", firstNameParameter);
+        }
+    
+        [DbFunction("TravelBookingEntities", "GetFirstNameAndIDByFirstName")]
+        public virtual IQueryable<GetFirstNameAndIDByFirstName_Result> GetFirstNameAndIDByFirstName(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetFirstNameAndIDByFirstName_Result>("[TravelBookingEntities].[GetFirstNameAndIDByFirstName](@firstName)", firstNameParameter);
+        }
     }
 }

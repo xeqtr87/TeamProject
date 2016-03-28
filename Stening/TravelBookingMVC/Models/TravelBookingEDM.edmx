@@ -119,6 +119,17 @@
         <Function Name="GetCustomerSendCommand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="firstName" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="GetFirstNameAndIDByFirstName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="firstName" Type="nvarchar(max)" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Customer_ID" Type="int" />
+                <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -149,19 +160,22 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SqlFunction1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SqlStoredProcedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="firstName" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="TestFunction1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="firstName" Type="nvarchar(max)" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
                 <Property Name="Customer_ID" Type="int" />
                 <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+                <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+                <Property Name="Email" Type="nvarchar" MaxLength="50" />
+                <Property Name="Phone" Type="nvarchar" MaxLength="10" />
               </RowType>
             </CollectionType>
           </ReturnType>
-        </Function>
-        <Function Name="SqlStoredProcedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="firstName" Type="nvarchar(max)" Mode="In" />
         </Function>
         <EntityContainer Name="TravelBookingModelStoreContainer">
           <EntitySet Name="Airline" EntityType="Self.Airline" Schema="dbo" store:Type="Tables" />
@@ -375,6 +389,15 @@
           <FunctionImport Name="SqlFunction1" IsComposable="true" ReturnType="Collection(TravelBookingModel.SqlFunction1_Result)">
             <Parameter Name="firstName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="TestFunction1" IsComposable="true" ReturnType="Collection(TravelBookingModel.TestFunction1_Result)">
+          <Parameter Name="firstName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SqlFunction11" IsComposable="true" ReturnType="Collection(TravelBookingModel.SqlFunction11_Result)">
+          <Parameter Name="firstName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetFirstNameAndIDByFirstName" IsComposable="true" ReturnType="Collection(TravelBookingModel.GetFirstNameAndIDByFirstName_Result)">
+          <Parameter Name="firstName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -388,6 +411,21 @@
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SqlFunction1_Result">
+          <Property Type="Int32" Name="Customer_ID" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="TestFunction1_Result">
+          <Property Type="Int32" Name="Customer_ID" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="SqlFunction11_Result">
+          <Property Type="Int32" Name="Customer_ID" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetFirstNameAndIDByFirstName_Result">
           <Property Type="Int32" Name="Customer_ID" Nullable="true" />
           <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
         </ComplexType>
@@ -487,9 +525,20 @@
           <FunctionImportMapping FunctionImportName="SqlStoredProcedure1" FunctionName="TravelBookingModel.Store.SqlStoredProcedure1" />
           <FunctionImportMapping FunctionImportName="GetCustomerReturnOne" FunctionName="TravelBookingModel.Store.GetCustomerReturnOne" />
           <FunctionImportMapping FunctionImportName="GetCustomerSendCommand" FunctionName="TravelBookingModel.Store.GetCustomerSendCommand" />
-          <FunctionImportMapping FunctionImportName="SqlFunction1" FunctionName="TravelBookingModel.Store.SqlFunction1">
+          <FunctionImportMapping FunctionImportName="TestFunction1" FunctionName="TravelBookingModel.Store.TestFunction1">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="TravelBookingModel.SqlFunction1_Result">
+              <ComplexTypeMapping TypeName="TravelBookingModel.TestFunction1_Result">
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFirstNameAndIDByFirstName" FunctionName="TravelBookingModel.Store.GetFirstNameAndIDByFirstName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TravelBookingModel.GetFirstNameAndIDByFirstName_Result">
                 <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
               </ComplexTypeMapping>

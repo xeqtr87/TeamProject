@@ -186,6 +186,9 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>TravelBookingEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetFirstNameAndIDByFirstName_Result.cs">
+      <DependentUpon>TravelBookingEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs">
@@ -200,10 +203,16 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>TravelBookingEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SqlFunction11_Result.cs">
+      <DependentUpon>TravelBookingEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SqlFunction1_Result.cs">
       <DependentUpon>TravelBookingEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>TravelBookingEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestFunction1_Result.cs">
       <DependentUpon>TravelBookingEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TravelBookingEDM.Context.cs">

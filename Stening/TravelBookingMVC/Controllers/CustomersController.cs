@@ -14,15 +14,12 @@ namespace TravelBookingMVC.Controllers
     public class CustomersController : Controller
     {
         private TravelBookingEntities db = new TravelBookingEntities();
-
+        
         // GET: Customers
         public ActionResult Index()
         {
-            
-
-            
-            var test = db.SqlFunction1("James");
-
+            var test = db.GetFirstNameAndIDByFirstName("James");
+            //db.TestFunctionGetFirstNameAndID("James");
             var test2 = test.ToList();
 
             //return View(db.Customers.ToList());
