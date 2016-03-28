@@ -141,5 +141,60 @@ namespace TravelBookingMVC.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SqlStoredProcedureTest1");
         }
+    
+        public virtual int TestProcedure(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TestProcedure", firstNameParameter);
+        }
+    
+        public virtual int GetCustomer(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetCustomer", firstNameParameter);
+        }
+    
+        public virtual int SqlStoredProcedure1(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SqlStoredProcedure1", firstNameParameter);
+        }
+    
+        public virtual int GetCustomerReturnOne(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetCustomerReturnOne", firstNameParameter);
+        }
+    
+        public virtual int GetCustomerSendCommand(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetCustomerSendCommand", firstNameParameter);
+        }
+    
+        [DbFunction("TravelBookingEntities", "SqlFunction1")]
+        public virtual IQueryable<SqlFunction1_Result> SqlFunction1(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SqlFunction1_Result>("[TravelBookingEntities].[SqlFunction1](@firstName)", firstNameParameter);
+        }
     }
 }

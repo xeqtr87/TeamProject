@@ -23,6 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <PermissionSet>SAFE</PermissionSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -64,9 +65,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SqlStoredProcedureTests.cs" />
+    <None Include="FlightBookingDatabase.publish.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FlightBookingDatabase.publish.xml" />
+    <Compile Include="SqlStoredProcedure1.cs" />
+    <Compile Include="GetCustomer.cs" />
+    <Compile Include="GetCustomerReturnOne.cs" />
+    <Compile Include="GetCustomerSendCommand.cs" />
+    <Compile Include="SqlFunction1.cs" />
   </ItemGroup>
 </Project>

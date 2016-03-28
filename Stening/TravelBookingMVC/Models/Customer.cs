@@ -10,8 +10,9 @@
 namespace TravelBookingMVC.Models
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
-    
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace TravelBookingMVC.Models
         {
             this.Orders = new HashSet<Order>();
         }
-    
+          
         public int Customer_ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
