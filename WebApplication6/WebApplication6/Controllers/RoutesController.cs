@@ -18,7 +18,16 @@ namespace WebApplication6.Controllers
         public ActionResult Index()
         {
 
-            return View(db.ListDestination2());
+            var route = db.Route.Select(item => new Route
+            {
+                Departure = item.Departure,
+                Destination = item.Destination
+
+            }).ToList();
+                
+
+
+            return View(route);
         }
 
         // GET: Routes/Details/5
