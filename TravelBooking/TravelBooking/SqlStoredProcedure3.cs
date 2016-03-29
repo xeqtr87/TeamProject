@@ -3,12 +3,25 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
+using System.Collections.Generic;
+
 
 public partial class StoredProcedures
 {
     [Microsoft.SqlServer.Server.SqlProcedure]
-    public static void CreateOrder(SqlString firstName, SqlString lastName, SqlString custEmail, SqlInt32 phone)
+    public static void CreateOrder(string firstName, string lastName, string custEmail, SqlInt32 phone)
     {
+        string[] hej = { firstName, lastName, custEmail };
+
+        for (int i = 0; i < hej.Length; i++)
+        {
+            if (hej[i] == "")
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+       
         SqlConnection conn = new SqlConnection("Context Connection=true");
 
         SqlCommand cmd = new SqlCommand();
