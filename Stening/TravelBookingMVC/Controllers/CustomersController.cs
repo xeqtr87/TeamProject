@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using TravelBookingMVC.Models;
 
+
+
 namespace TravelBookingMVC.Controllers
 {
     public class CustomersController : Controller
@@ -21,7 +23,7 @@ namespace TravelBookingMVC.Controllers
             var test = db.GetFirstNameAndIDByFirstName("James");
             //db.TestFunctionGetFirstNameAndID("James");
             var test2 = test.ToList();
-
+            db.Database.SqlQuery("SqlStoredProcedure1") ;
             //return View(db.Customers.ToList());
             return View(test2);
         }

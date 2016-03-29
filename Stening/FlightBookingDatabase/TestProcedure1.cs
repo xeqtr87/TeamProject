@@ -4,27 +4,25 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
-public partial class StoredProcedures
-{
+public partial class StoredProcedures {
     [Microsoft.SqlServer.Server.SqlProcedure]
-    public static void SqlStoredProcedure1(string firstName)
+    public static void TestProcedure1(SqlString test)
     {
         using (SqlConnection conn = new SqlConnection("context connection=true"))
         {
-            //SqlCommand getCustomerByFirstName = new SqlCommand("SELECT * from Customer", conn);
-            //SqlParameter paramName = new SqlParameter("@FirstName", SqlDbType.NVarChar);
+            SqlCommand getCustomerByFirstName = new SqlCommand("SET @FirstName ='changed'", conn);
+            SqlParameter paramName = new SqlParameter("@FirstName", SqlDbType.NVarChar);
 
-            //paramName.Value = firstName;
+            paramName.Value = test;
 
-            //getCustomerByFirstName.Parameters.Add(firstName);
+            getCustomerByFirstName.Parameters.Add(test);
 
             //getCustomerByFirstName.CommandText = "SELECT * from Customer";
 
-
             conn.Open();
-            SqlCommand getCustomerByFirstName = new SqlCommand("SELECT * from Customer", conn);
+            //SqlCommand getCustomerByFirstName = new SqlCommand("SELECT * from Customer", conn);
             //SqlDataReader rdr = getCustomerByFirstName.ExecuteReader();
-            SqlContext.Pipe.ExecuteAndSend(getCustomerByFirstName);
+            SqlContext.Pipe.Send(test.ToString());
             //SqlContext.Pipe.ExecuteAndSend(getCustomerByFirstName);
             //rdr.Close();
             //getCustomerByFirstName.ExecuteNonQuery();

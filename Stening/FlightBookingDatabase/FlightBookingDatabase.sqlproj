@@ -74,5 +74,6 @@
     <Compile Include="GetCustomerSendCommand.cs" />
     <Compile Include="TestFunction1.cs" />
     <Compile Include="GetFirstNameAndIDByFirstName.cs" />
+    <Compile Include="TestProcedure1.cs" />
   </ItemGroup>
 </Project>
