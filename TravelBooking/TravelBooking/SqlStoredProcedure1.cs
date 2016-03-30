@@ -9,7 +9,7 @@ public partial class StoredProcedures
     [Microsoft.SqlServer.Server.SqlProcedure]
     public static void FindCountry(SqlString dest)
     {
-        //It	returns	rows	from	Employee	table	on	basis	of	supplied	age	
+        //It	returns	rows	from	zfdEmployee	table	on	basis	of	supplied	age	
         SqlConnection conn = new SqlConnection("Context Connection=true");
         
         SqlCommand cmd = new SqlCommand();
